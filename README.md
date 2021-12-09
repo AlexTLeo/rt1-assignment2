@@ -16,7 +16,7 @@ catkin_make
 ```
 Then, you have two options:
 ### Option 1
-Then, run the stageros node
+First, run the stageros node
 ```
 rosrun stage_ros stageros $(rospack find second_assignment)/world/my_world.world
 ```
