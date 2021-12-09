@@ -1,0 +1,18 @@
+<launch>
+  <!-- run the stageros node -->
+  <node name="stageros" pkg="stage_ros" type="stageros" required="true"
+    args="$(find second_assignment)/world/my_world.world"/>
+
+  <!-- For logging -->
+  <!-- <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}] [${node}]: ${message}"/>
+  <node name="sa_controller" pkg="rt1-assignment2"
+    type="rt1-assignment2_node" required="true" output="log"/> -->
+
+  <!-- For terminal (human) reading -->
+  <env name="ROSCONSOLE_FORMAT" value="${message}"/>
+  <node name="sa_controller" pkg="rt1-assignment2"
+    type="rt1-assignment2_node" required="true" output="screen"/>
+
+  <node name="sa_ui" pkg="rt1-assignment2"
+    type="rt1-assignment2_ui_node" required="false"/>
+</launch>
