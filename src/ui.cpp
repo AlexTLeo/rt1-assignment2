@@ -28,8 +28,8 @@ int main (int argc, char **argv) {
   // Even though a srv could be sent directly to the stageros node, it is
   // preferred to send it to the controller so as to have one central node for
   // communications
-  clientReset = nh.serviceClient<std_srvs::Empty>("/controller_reset", 1);
-  clientVel = nh.serviceClient<std_srvs::SetBool>("/controller_vel", 1);
+  clientReset = nh.serviceClient<std_srvs::Empty>("/controller_reset");
+  clientVel = nh.serviceClient<std_srvs::SetBool>("/controller_vel");
 
   while (ros::ok()) {
     switch(detectKeyPress()) {

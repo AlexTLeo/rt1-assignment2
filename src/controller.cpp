@@ -87,7 +87,7 @@ ros::ServiceClient clientReset;
 float robotBaseVelocity = 1;
 float robotRealVelocityDrive = 1; /// after it has been scaled
 float robotRealVelocityTurn = 1; /// after it has been scaled
-const float kp = 20; /// used for scaleTurnVelocity
+const float kp = 10; /// used for scaleTurnVelocity
 
 /// distance at which robot will brake to avoid collision
 const float BRAKE_THRESHOLD = 0.4f;
@@ -113,7 +113,7 @@ int main (int argc, char **argv) {
   ros::Subscriber sub = nh.subscribe("/base_scan", 1, baseScanParser);
 
   pubVel = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
-  clientReset = nh.serviceClient<std_srvs::Empty>("/reset_positions", 1);
+  clientReset = nh.serviceClient<std_srvs::Empty>("/reset_positions");
 
   // Servers for UI node
   serverReset = nh.advertiseService("/controller_reset", resetPosition);
@@ -139,12 +139,12 @@ int main (int argc, char **argv) {
       calculateVelocities(driveSpeed, turnSpeed, dR);
       turn(turnSpeed, driveSpeed, false);
       printMessage("Turning LEFT");
-    } else if (dLF <= 1.5f) {
+    } else if (dLF <= 1.8f) {
       // Sector LEFT-FRONT
       calculateVelocities(driveSpeed, turnSpeed, dLF);
       turn(turnSpeed, driveSpeed, true);
       printMessage("Turning RIGHT");
-    } else if (dRF <= 1.5f) {
+    } else if (dRF <= 1.8f) {
       // Sector RIGHT-FRONT
       calculateVelocities(driveSpeed, turnSpeed, dRF);
       turn(turnSpeed, driveSpeed, false);
