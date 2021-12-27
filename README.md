@@ -22,7 +22,7 @@ rosrun stage_ros stageros $(rospack find second_assignment)/world/my_world.world
 ```
 Finally, run the controller and ui node
 ```
-roslaunch second_assignment_controller second_assignment_controller_node
+rosrun second_assignment_controller second_assignment_controller_node
 rosrun second_assignment_controller second_assignment_controller_ui_node
 ```
 ### Option 2: one-liner
